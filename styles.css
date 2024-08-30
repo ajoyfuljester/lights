@@ -10,11 +10,12 @@ body {
 	display: grid;
 
 	--radius: 20vmin;
-	--length: 20vmin;
+	--length: 10vmin;
 
 	--height: calc(var(--length) * sqrt(3) / 2);
 
-	filter: blur(10px);
+	filter: blur(calc(var(--radius) / 20 / 5));
+	animation: rotate360 2s linear infinite forwards;
 
 	> div {
 		mix-blend-mode: lighten;
@@ -23,20 +24,50 @@ body {
 		aspect-ratio: 1;
 		border-radius: 50%;
 		grid-area: 1 / 1 / 2 / 2;
+		animation: varBounce var(--td) ease-in-out 3s infinite forwards;
 
 		&:nth-child(1) {
-			background-color: #f00;
+			background-color: #f00c;
 			translate: 0 calc(var(--height) * 2 / 3 * -1);
+			--tx: var(--rtx, calc(var(--radius) * 2.2));
+			--ty: var(--rty, calc(var(--radius) * 1.4));
+			--td: var(--rtd, 7s);
 		}
 
 		&:nth-child(2) {
-			background-color: #0f0;
+			background-color: #0f0c;
 			translate: calc(var(--length) / 2 * -1) calc(var(--height) / 3);
+			--tx: var(--gtx, calc(var(--radius) * 2));
+			--ty: var(--gty, calc(var(--radius) * -2.3));
+			--td: var(--gtd, 11s);
 		}
 
 		&:nth-child(3) {
-			background-color: #00f;
+			background-color: #00fc;
 			translate: calc(var(--length) / 2) calc(var(--height) / 3);
+			--tx: var(--btx, calc(var(--radius) * -1.7));
+			--ty: var(--bty, calc(var(--radius) * 2.1));
+			--td: var(--btd, 13s);
 		}
+	}
+}
+
+@keyframes rotate360 {
+	from {
+		rotate: 0deg;
+	}
+
+	to {
+		rotate: 360deg;
+	}
+}
+
+@keyframes varBounce {
+	from, to {
+		transform: translate(0, 0);
+	}
+
+	50% {
+		transform: translate(var(--tx), var(--ty));
 	}
 }
