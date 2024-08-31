@@ -9,8 +9,8 @@ body {
 .lights {
 	display: grid;
 
-	--radius: 20vmin;
-	--length: 10vmin;
+	--radius: 15vmin;
+	--length: 20vmin;
 
 	--height: calc(var(--length) * sqrt(3) / 2);
 
@@ -18,37 +18,42 @@ body {
 	animation: rotate360 2s linear infinite forwards;
 
 	> div {
+		grid-area: 1 / 1 / 2 / 2;
 		mix-blend-mode: lighten;
+
+		&:nth-child(1) {
+			transform: translate(0, calc(var(--height) * -2 / 3));
+			--clr-bg: var(--clr-r, #f00c);
+			--tx: var(--tx-r, 0);
+			--ty: var(--ty-r, calc(var(--radius) * -1));
+			--td: var(--td-r, 3s);
+		}
+
+		&:nth-child(2) {
+			transform: rotate(-120deg) translate(0, calc(var(--height) * -2 / 3));
+			--clr-bg: var(--clr-g, #0f0c);
+			--tx: var(--tx-g, 0);
+			--ty: var(--ty-g, calc(var(--radius) * -1));
+			--td: var(--td-g, 3s);
+		}
+
+		&:nth-child(3) {
+			transform: rotate(-240deg) translate(0, calc(var(--height) * -2 / 3));
+			--clr-bg: var(--clr-b, #00fc);
+			--tx: var(--tx-b, 0);
+			--ty: var(--ty-b, calc(var(--radius) * -1));
+			--td: var(--td-b, 3s);
+		}
+	}
+
+	> div > div {
+		background-color: var(--clr-bg);
 
 		width: calc(var(--radius) * 2);
 		aspect-ratio: 1;
 		border-radius: 50%;
-		grid-area: 1 / 1 / 2 / 2;
-		animation: varBounce var(--td) ease-in-out 3s infinite forwards;
+		animation: varBounce var(--td) cubic-bezier(.5,.25,.5,.75) 3s infinite forwards;
 
-		&:nth-child(1) {
-			background-color: #f00c;
-			translate: 0 calc(var(--height) * 2 / 3 * -1);
-			--tx: var(--rtx, calc(var(--radius) * 2.2));
-			--ty: var(--rty, calc(var(--radius) * 1.4));
-			--td: var(--rtd, 7s);
-		}
-
-		&:nth-child(2) {
-			background-color: #0f0c;
-			translate: calc(var(--length) / 2 * -1) calc(var(--height) / 3);
-			--tx: var(--gtx, calc(var(--radius) * 2));
-			--ty: var(--gty, calc(var(--radius) * -2.3));
-			--td: var(--gtd, 11s);
-		}
-
-		&:nth-child(3) {
-			background-color: #00fc;
-			translate: calc(var(--length) / 2) calc(var(--height) / 3);
-			--tx: var(--btx, calc(var(--radius) * -1.7));
-			--ty: var(--bty, calc(var(--radius) * 2.1));
-			--td: var(--btd, 13s);
-		}
 	}
 }
 
