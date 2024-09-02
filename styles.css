@@ -26,7 +26,7 @@ body > * {
 
 		&:nth-child(1) {
 			transform: translate(0, calc(var(--height) * -2 / 3));
-			--clr: var(--clr-r, #f00c);
+			--clr: var(--clr-r, #f00d);
 			--tx: var(--tx-r, 0);
 			--ty: var(--ty-r, calc(var(--radius) * -1));
 			--td: var(--td-r, 3s);
@@ -34,7 +34,7 @@ body > * {
 
 		&:nth-child(2) {
 			transform: rotate(-120deg) translate(0, calc(var(--height) * -2 / 3));
-			--clr: var(--clr-g, #0f0c);
+			--clr: var(--clr-g, #0f0d);
 			--tx: var(--tx-g, 0);
 			--ty: var(--ty-g, calc(var(--radius) * -1));
 			--td: var(--td-g, 3s);
@@ -42,7 +42,7 @@ body > * {
 
 		&:nth-child(3) {
 			transform: rotate(-240deg) translate(0, calc(var(--height) * -2 / 3));
-			--clr: var(--clr-b, #00fc);
+			--clr: var(--clr-b, #00fd);
 			--tx: var(--tx-b, 0);
 			--ty: var(--ty-b, calc(var(--radius) * -1));
 			--td: var(--td-b, 3s);
@@ -88,7 +88,7 @@ body > * {
 
 
 	--width: 1.5vmin;
-	--clr: #555c;
+	--clr: #555d;
 	--rotation: -90deg;
 	--top: 0%;
 	--left: 0%;
@@ -111,7 +111,7 @@ body > * {
 
 	> div > div {
 		mix-blend-mode: screen;
-		/*background-color: var(--clr);*/
+		background-color: var(--clr);
 		height: 100%;
 		width: calc(var(--width) / 3);
 	}
